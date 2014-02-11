@@ -1,0 +1,5 @@
+#!/bin/sh
+curl -s http://popcon.ubuntu.com/by_vote.gz \
+	| gzip -cd | perl -ne \
+	'printf "%s,%d\n", $1, $2 if /\s(firefox(?:-(?:2|3.0|3.5|[4-9][\d.]*))?|konqueror(?:-kde3)?|opera|seamonkey-browser|epiphany-(?:gecko|webkit|browser)|galeon|amaya|dillo(?:2)?|midori|arora|netsurf|kazehakase|conkeror|webkitkde|kpart-webkit|flock|chromium-browser|google-chrome-\w+|swiftfox-prescott|rekonq|fennec|libseed\d+|qupzilla|luakit|surf|uzbl)\s+\d+\s+(\d+)/ && $2 > 0' \
+	> /Library/WebServer/popcon/stats/`date +%Y-%m-%d`

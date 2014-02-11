@@ -1,0 +1,3 @@
+#!/bin/sh
+curl -s http://popcon.ubuntu.com/all-popcon-results.txt.gz \
+	-o /Library/WebServer/popcon/raw/`date +%Y-%m-%d`.gz

@@ -1,0 +1,5 @@
+This takes data from the popularity-contest package and graphs it. You'll need to fetch new data every day, there is no historical popcon record.
+
+It requires Apache and PHP. The PNG implementation is more current than the GC one.
+
+http://popcon.ubuntu.com/
