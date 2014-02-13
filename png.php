@@ -334,6 +334,7 @@ class PackageGraph {
 		$this->text_mid = ($bbox[5] + $bbox[1]) / 2;
 		
 		// Generate legend items
+		$groups = array();
 		foreach ($this->order as $idx => $name) {
 			$groups[] = new LegendGroup($this->label_pad, $this->text_height,
 				$idx, $name, $this->ycoord($this->last[$name]));
@@ -341,7 +342,7 @@ class PackageGraph {
 		
 		// Try to arrange them so they don't collide
 		$i = 1;
-		while ($groups[$i]) {
+		while (isset($groups[$i])) {
 			//$this->print_groups($i, $groups);
 			if ($groups[$i-1]->overlaps($groups[$i])) {
 				$groups[$i-1]->merge($groups[$i]);
