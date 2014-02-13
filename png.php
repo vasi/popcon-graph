@@ -148,7 +148,7 @@ class PackageGraph {
 					$total += $vote;
 				}
 			}
-			if ($firefox_versions > $packages['firefox']) {
+			if (isset($packages['firefox']) && $firefox_versions > $packages['firefox']) {
 				$total += $firefox_versions - $packages['firefox'];
 			}
 			
