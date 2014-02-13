@@ -390,5 +390,8 @@ class PackageGraph {
 	}
 }
 
+// Suppress warnings if no timezone defined
+date_default_timezone_set(@date_default_timezone_get());
+
 $graph = new PackageGraph(isset($_REQUEST['size']) ? $_REQUEST['size'] : '');
 $graph->display();
