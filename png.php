@@ -175,14 +175,14 @@ class PackageGraph {
 			$scale_x = (int)($this->graph_bounds->w *
 				(((float)$x - $this->data_bounds->x) / $this->data_bounds->w))
 				+ $this->graph_bounds->x;
-			if (!is_null($cur_x) && $cur_x == $scale_x) { // Duplicate point, merge
+			if (isset($cur_x) && $cur_x == $scale_x) { // Duplicate point, merge
 				$cur_tot += $y;
 				++$cur_count;
 			} else { // New point
-				if (!is_null($cur_x)) { // Not the first point
+				if (isset($cur_x)) { // Not the first point
 					// Calculate average for this point
 					$cur_y = (float)$cur_tot / $cur_count;
-					if (!is_null($last_x)) {
+					if (isset($last_x)) {
 						$this->graph_line($last_x, $last_y, $cur_x, $cur_y, $color);
 					}
 					$last_x = $cur_x;
@@ -194,9 +194,9 @@ class PackageGraph {
 				$cur_count = 1;
 			}
 		}
-		if (!is_null($cur_x)) {
+		if (isset($cur_x)) {
 			$cur_y = (float)$cur_tot / $cur_count;
-			if (!is_null($last_x)) { // Draw last line
+			if (isset($last_x)) { // Draw last line
 				$this->graph_line($last_x, $last_y, $cur_x, $cur_y, $color);
 			} else { // Just one point!
 				imageFilledEllipse($this->image, $cur_x, $this->ycoord($cur_y),
