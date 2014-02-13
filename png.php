@@ -390,5 +390,5 @@ class PackageGraph {
 	}
 }
 
-$graph = new PackageGraph($_REQUEST['size']);
+$graph = new PackageGraph(isset($_REQUEST['size']) ? $_REQUEST['size'] : '');
 $graph->display();
